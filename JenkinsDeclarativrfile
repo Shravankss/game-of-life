@@ -7,7 +7,7 @@ stages{
 
             git branch: 'master' , url: 'https://github.com/Shravankss/game-of-life.git'
 
-'
+
             
         }
     }
