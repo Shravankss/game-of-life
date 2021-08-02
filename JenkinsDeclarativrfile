@@ -23,7 +23,7 @@ stages{
 
 post {
     success{
-        artifacts 'gameoflife-web/target/gameoflife.war'
+        archive 'gameoflife-web/target/gameoflife.war'
         junit '**/TEST-*xml'
     }
     
