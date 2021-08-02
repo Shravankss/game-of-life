@@ -5,7 +5,8 @@ pipeline{
         pollSCM('* * * * *')
     }
     parameters{
-        string(name: 'BRANCH', defaultValue: 'master', description: 'Ok')
+        string(name: 'MAVEN', defaultValue: 'mvn package', description: 'Ok')
+        choice(name: 'BRANCH', choices: ['continuous-delivery', 'Two', 'Three'], description: 'Pick something')
     }
 
 stages{
@@ -21,7 +22,7 @@ stages{
     stage('build'){
 
         steps{
-            sh 'mvn package'
+            sh "${MAVEN}"
 
 
         }
