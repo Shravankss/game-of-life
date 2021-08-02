@@ -4,6 +4,9 @@ pipeline{
         cron('H * * * *')
         pollSCM('* * * * *')
     }
+    parameters{
+        string(name: 'BRANCH', defaultValue: 'master', description: 'Ok')
+    }
 
 stages{
     stage('scm'){
