@@ -22,7 +22,7 @@ stages{
     stage('build'){
 
         steps{
-            sh "${MAVEN}"
+            sh "${params.MAVEN}"
 
 
         }
