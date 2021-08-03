@@ -6,7 +6,7 @@ pipeline{
     }
     parameters{
         string(name: 'MAVEN', defaultValue: 'mvn package', description: 'Ok')
-        choice(name: 'BRANCH', choices: ['continuous-delivery', 'Two', 'Three'], description: 'Pick something')
+        choice(name: 'BRANCH', choices: ['continuous-delivery', 'master', 'feature-delivery'], description: 'Pick something')
     }
 
 stages{
@@ -26,8 +26,16 @@ stages{
 
 
         }
+        stash includes: '**/gameoflife.war', name: 'golwar'
     }
 }
+stage('devserver'){
+            agent { label 'RHEL,'}
+            steps {
+                unstash name: 'golwar'
+            }
+        }
+    }
 
 post {
     success{
