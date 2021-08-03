@@ -8,15 +8,11 @@ pipeline{
         string(name: 'MAVEN', defaultValue: 'package', description: 'Ok')
         choice(name: 'BRANCH', choices: ['continuous-delivery', 'master', 'feature-delivery'], description: 'Pick something')
     }
-
 stages{
     stage('scm'){
         steps{
 
-            git branch: "${params.BRANCH}" , url: 'https://github.com/Shravankss/game-of-life.git'
-
-
-            
+            git branch: "${params.BRANCH}" , url: 'https://github.com/Shravankss/game-of-life.git'      
         }
     }
     stage('build'){
@@ -30,23 +26,17 @@ stages{
         }
         
     }
-
-
 stage('devserver'){
             agent { label 'RHEL,'}
             steps {
                 unstash name: 'golwar'
             }
         }
-    
-
 post {
     success{
         archive 'gameoflife-web/target/gameoflife.war'
         junit '**/TEST-*xml'
     }
-    
-
 }
 }
 }
