@@ -31,7 +31,7 @@ stages{
         
     }
 
-    
+
 stage('devserver'){
             agent { label 'RHEL,'}
             steps {
@@ -47,5 +47,6 @@ post {
     }
     
 
+}
 }
 }
