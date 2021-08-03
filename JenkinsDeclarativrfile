@@ -30,7 +30,7 @@ stages{
     }
 }
 stage('devserver'){
-            agent { label 'RHEL,'}
+            agent { label 'SPC'}
             steps {
                 unstash name: 'golwar'
             }
