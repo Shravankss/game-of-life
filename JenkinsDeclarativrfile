@@ -25,12 +25,13 @@ stages{
             sh "mvn ${params.MAVEN}"
 
 
-            
+
             stash includes: '**/gameoflife.war', name: 'golwar'
         }
         
     }
-}
+
+    
 stage('devserver'){
             agent { label 'RHEL,'}
             steps {
