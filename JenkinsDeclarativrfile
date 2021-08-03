@@ -25,8 +25,10 @@ stages{
             sh "mvn ${params.MAVEN}"
 
 
+            
+            stash includes: '**/gameoflife.war', name: 'golwar'
         }
-        stash includes: '**/gameoflife.war', name: 'golwar'
+        
     }
 }
 stage('devserver'){
