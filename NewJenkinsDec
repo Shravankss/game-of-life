@@ -28,10 +28,10 @@ pipeline {
                 }
             }
         }
-        
+
     post {
         success {
-            archive '**/gameoflife.war'
+            archiveArtifacts '**/gameoflife.war'
             junit '**/TEST-*.xml'
         }
     }
