@@ -5,7 +5,7 @@ pipeline {
         pollSCM('* * * * *')
     }
     parameters {
-        string(name: 'MAVEN', defaultValue: 'package', description: 'maven goals' )
+        string(name: 'MAVEN', defaultValue: 'mvn package', description: 'maven goals' )
         choice(name: 'BRANCH', choices: ['master', 'continuous-delivery', 'feature-delivery'], description: 'Branch to build')
     }
     stages {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                    sh "mvn ${params.MAVEN}"
+                    sh "${params.MAVEN}"
                     stash includes: '**/gameoflife.war', name: 'golwar'
                 }
                 
